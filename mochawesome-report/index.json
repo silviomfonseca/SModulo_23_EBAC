@@ -1,0 +1,125 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 2,
+    "passes": 2,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-11-22T00:53:02.747Z",
+    "end": "2022-11-22T00:53:23.289Z",
+    "duration": 20542,
+    "testsRegistered": 2,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "5704f2c1-1002-4c11-abdc-465d9744f483",
+      "title": "",
+      "fullFile": "cypress\\e2e\\addProduto.cy.js",
+      "file": "cypress\\e2e\\addProduto.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "72bfa139-8d36-4e8b-a8e6-edcfab679069",
+          "title": "Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "PEsquisar produtos",
+              "fullTitle": "Login PEsquisar produtos",
+              "timedOut": null,
+              "duration": 9793,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept({\n  method: 'GET',\n  url: '/wp-admin/admin-ajax*',\n  query: {\n    term: 'Jacket'\n  }\n}, req => {\n  req.reply({\n    statusCode: 200,\n    body: `${req.query.callback}(\n                    ${JSON.stringify(data.autocompleteSearchData)}\n                )`\n  });\n}), _pages.clicaSpace.searchMagnifier();\n_pages.productSearchPage.search('Jacket');\n_pages.productSearchPage.productList.first().should('have.attr', 'title', 'Ingrid Running Jacket');",
+              "err": {},
+              "uuid": "8faec70a-7872-476a-988c-df0dfbf82a25",
+              "parentUUID": "72bfa139-8d36-4e8b-a8e6-edcfab679069",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "Incluri item carrinho de compra",
+              "fullTitle": "Login Incluri item carrinho de compra",
+              "timedOut": null,
+              "duration": 10609,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept({\n  method: 'GET',\n  url: '/prodcut/ingrid-running-jacket*',\n  query: {\n    term: 'ingrid-running-jacket'\n  }\n}, req => {\n  req.reply({\n    statusCode: 200,\n    body: `${req.query.callback}(\n                ${JSON.stringify()}\n            )`\n  });\n}), _pages.adicionaProdutoPage.clicaProduto();\ncy.intercept({\n  method: 'POST',\n  url: 'wp-admin/admin-ajax*',\n  query: {\n    term: 'S'\n  }\n}, req => {\n  req.reply({\n    statusCode: 200,\n    body: `${req.query.callback}(\n                    ${JSON.stringify()}\n                )`\n  });\n}), _pages.sizeProdutoPage.clicaSize();\ncy.intercept({\n  method: 'POST',\n  url: 'wp-admin/admin-ajax*',\n  query: {\n    term: 'Orange'\n  }\n}, req => {\n  req.reply({\n    statusCode: 200,\n    body: `${req.query.callback}(\n                    ${JSON.stringify()}\n                )`\n  });\n}), _pages.colorProdutoPage.clicaColor();\n_pages.skuProdutoPage.skuType.contains('WJ04-S-Orange');\ncy.intercept({\n  method: 'POST',\n  url: 'product/ingrid-running-jacket*',\n  query: {\n    term: 'Comprar'\n  }\n}, req => {\n  req.reply({\n    statusCode: 200,\n    body: `${req.query.callback}(\n                ${JSON.stringify()}\n                )`\n  });\n}), _pages.adicionaComprarPage.clicaComprar();\n_pages.adicionaComprarPage.textComprar.contains('em estoque');\n_pages.adicionaComprarPage.clicaConfere();",
+              "err": {},
+              "uuid": "f41585ff-80f0-4322-a06a-0045a2fd6407",
+              "parentUUID": "72bfa139-8d36-4e8b-a8e6-edcfab679069",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "8faec70a-7872-476a-988c-df0dfbf82a25",
+            "f41585ff-80f0-4322-a06a-0045a2fd6407"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 20402,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "index.html",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "mochawesome-report",
+        "reportFilename": "index.html",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

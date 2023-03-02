@@ -1,0 +1,110 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2022-11-22T00:53:29.487Z",
+    "end": "2022-11-22T00:53:38.679Z",
+    "duration": 9192,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "35b97e3e-eac7-4868-9347-3a1981d6996f",
+      "title": "",
+      "fullFile": "cypress\\e2e\\atualizaCarrinho.cy.js",
+      "file": "cypress\\e2e\\atualizaCarrinho.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "b62c57eb-7350-48d3-a667-d336fb602aeb",
+          "title": "Checkout",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Atualizar carrinho de compras",
+              "fullTitle": "Checkout Atualizar carrinho de compras",
+              "timedOut": null,
+              "duration": 9050,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept({\n  method: 'GET',\n  url: '/carrinho/*',\n  query: {\n    term: 'View Cart'\n  }\n}, req => {\n  req.reply({\n    statusCode: 200,\n    body: `${req.query.callback}(\n                ${JSON.stringify()}\n            )`\n  });\n}), _pages.verCarrinhoPage.clicaCarrinho();\n_pages.verCarrinhoPage.clicaViewCart();\ncy.intercept({\n  method: 'POST',\n  url: 'carrinho/*',\n  query: {\n    term: 'plus'\n  }\n}, req => {\n  req.reply({\n    statusCode: 302,\n    body: `${req.query.callback}(\n                    ${JSON.stringify()}\n                )`\n  });\n}), _pages.atualizarCarrinho.digitaQtd();\ncy.intercept({\n  method: 'POST',\n  url: 'carrinho/*',\n  query: {\n    term: 'plus'\n  }\n}, req => {\n  req.reply({\n    statusCode: 302,\n    body: `${req.query.callback}(\n                        ${JSON.stringify()}\n                    )`\n  });\n});",
+              "err": {
+                "message": "CypressError: `cy.type()` can only be called on a single element. Your subject contained 2 elements.\n\nhttps://on.cypress.io/type",
+                "estack": "CypressError: `cy.type()` can only be called on a single element. Your subject contained 2 elements.\n\nhttps://on.cypress.io/type\n    at Context.type (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:137566:76)\n    at wrapped (http://lojaebac.ebaconline.art.br/__cypress/runner/cypress_runner.js:157508:19)\nFrom Your Spec Code:\n    at Object.digitaQtd (webpack:///./cypress/support/pages/verCarrinho,.page.js:15:34)\n    at Context.eval (webpack:///./cypress/e2e/atualizaCarrinho.cy.js:59:30)",
+                "diff": null
+              },
+              "uuid": "ccde77db-a9d5-4d10-8187-247d3bf00ff0",
+              "parentUUID": "b62c57eb-7350-48d3-a667-d336fb602aeb",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "ccde77db-a9d5-4d10-8187-247d3bf00ff0"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 9050,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "index.html",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "mochawesome-report",
+        "reportFilename": "index.html",
+        "overwrite": false,
+        "html": true,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

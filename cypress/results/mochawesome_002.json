@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2022-09-20T00:08:05.073Z",
+    "end": "2022-09-20T00:08:15.845Z",
+    "duration": 10772,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "8444c6d4-5da0-49ec-bc33-7e4e293d36c2",
+      "title": "",
+      "fullFile": "cypress\\e2e\\removeProdutos.cy.js",
+      "file": "cypress\\e2e\\removeProdutos.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "5d6cbf9b-9661-443f-8c77-eed47a4ef12e",
+          "title": "Login",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "Remover produtos do carrinho",
+              "fullTitle": "Login Remover produtos do carrinho",
+              "timedOut": null,
+              "duration": 10636,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "cy.intercept({\n  method: 'GET',\n  url: '/carrinho/*',\n  query: {\n    term: 'View Cart'\n  }\n}, req => {\n  req.reply({\n    statusCode: 200,\n    body: `${req.query.callback}(\n                ${JSON.stringify()}\n            )`\n  });\n}), _pages.verCarrinhoPage.clicaCarrinho();\n_pages.verCarrinhoPage.clicaViewCart();\ncy.intercept({\n  method: 'GET',\n  url: 'carrinho/*',\n  query: {\n    term: 'remove this item'\n  }\n}, req => {\n  req.reply({\n    statusCode: 200,\n    body: `${req.query.callback}(\n                    ${JSON.stringify()}\n                )`\n  });\n}), _pages.removeProdutos.clicaRemover();\n_pages.removeProdutos.textProdut.contains('Ingsrid Running Jacket - S, Orange');",
+              "err": {
+                "message": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#cart > .dropdown-menu > .widget_shopping_cart_content > .mini_cart_content > .mini_cart_inner > .mcart-border > .buttons > .view-cart`, but never found it.",
+                "estack": "AssertionError: Timed out retrying after 4000ms: Expected to find element: `#cart > .dropdown-menu > .widget_shopping_cart_content > .mini_cart_content > .mini_cart_inner > .mcart-border > .buttons > .view-cart`, but never found it.\n    at Object.get viewCart [as viewCart] (http://lojaebac.ebaconline.art.br/__cypress/tests?p=cypress\\e2e\\removeProdutos.cy.js:634:15)\n    at Object.clicaViewCart (http://lojaebac.ebaconline.art.br/__cypress/tests?p=cypress\\e2e\\removeProdutos.cy.js:638:10)\n    at Context.eval (http://lojaebac.ebaconline.art.br/__cypress/tests?p=cypress\\e2e\\removeProdutos.cy.js:128:28)",
+                "diff": null
+              },
+              "uuid": "e1ec3e35-4fcf-484e-b87a-48d1f2c2724e",
+              "parentUUID": "5d6cbf9b-9661-443f-8c77-eed47a4ef12e",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "e1ec3e35-4fcf-484e-b87a-48d1f2c2724e"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 10636,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/results",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.2.0"
+    }
+  }
+}

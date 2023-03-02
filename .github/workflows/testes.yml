@@ -1,0 +1,44 @@
+name: EBAC-MODULO-25
+
+
+on:
+
+  push:
+    branches: [ testes_ci ] 
+
+
+  workflow_dispatch:
+
+
+jobs:
+  
+  build:
+    # Executar em um windows-latest, ubuntu-latest
+    runs-on: ubuntu-latest
+    
+    # Qual versão do node vai ser utilizada
+    strategy:
+      matrix:
+        node-version: [12.x]
+    
+  
+    steps:
+        - name: Setup Node.js
+          uses: actions/setup-node@v2.1.2
+          with:
+            node-version: ${{ matrix.node-version }}
+        - uses: actions/checkout@v2
+
+        - run: npm install
+        
+        - run: "npx cypress run --reporter mochawesome  --reporter-options reportDir=\"cypress/results\",overwrite=false,html=false,json=true && npx mochawesome-merge \"cypress/results/*.json\" > mochawesome.json  && npx marge mochawesome.json"
+       
+         
+        - name: Deploy to GitHub Pages
+          uses: JamesIves/github-pages-deploy-action@3.7.1
+        - name: Publish Report 
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            GITHUB_TOKEN: ${{SECRETS.GITHUB_TOKEN}}
+            publish_dir: ./mochawesome-report  
+        
